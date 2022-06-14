@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1544px;
+            height: 852px;
+        }
+        </style>
+        <title>2021 Commercial Corridors that Completed CD Funded Activities through Avenue NYC</title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0.js"></script>
+        <script src="data/WoodhavenBIDWoodhaven_BID_1.js"></script>
+        <script src="data/SunnysideBID_2.js"></script>
+        <script src="data/RockawayBusinessAllianceRockaway_Business_Alliance_3.js"></script>
+        <script src="data/QEDCRichmondHillQEDC_Richmond_Hill_4.js"></script>
+        <script src="data/MorrisParkBIDMorris_Park_BID_5.js"></script>
+        <script src="data/JamaicaCenterBIDJamaica_Center_BID_6.js"></script>
+        <script src="data/HarlemParktoParkHarlem_Park_to_Park_7.js"></script>
+        <script src="data/GreaterHuntsPointGreater_Hunts_Point_8.js"></script>
+        <script src="data/EastVillageCooperSquareEast_Village_Cooper_Square_9.js"></script>
+        <script src="data/CLOTH_10.js"></script>
+        <script src="data/ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11.js"></script>
+        <script src="data/BayRidgeBay_Ridge_12.js"></script>
+        <script src="data/BridgeStBedStuyBridge_St_Bed_Stuy_13.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[40.57019548799286,-74.11381056934678],[40.81212117880916,-73.53838033907596]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['boro_code'] !== null ? autolinker.link(feature.properties['boro_code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['boro_ct201'] !== null ? autolinker.link(feature.properties['boro_ct201'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['boro_name'] !== null ? autolinker.link(feature.properties['boro_name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cdeligibil'] !== null ? autolinker.link(feature.properties['cdeligibil'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ct2010'] !== null ? autolinker.link(feature.properties['ct2010'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ctlabel'] !== null ? autolinker.link(feature.properties['ctlabel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ntacode'] !== null ? autolinker.link(feature.properties['ntacode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ntaname'] !== null ? autolinker.link(feature.properties['ntaname'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['puma'] !== null ? autolinker.link(feature.properties['puma'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shape_area'] !== null ? autolinker.link(feature.properties['shape_area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shape_leng'] !== null ? autolinker.link(feature.properties['shape_leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0_0() {
+            return {
+                pane: 'pane_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0',
+                opacity: 1,
+                color: 'rgba(78,79,92,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(59,60,76,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0');
+        map.getPane('pane_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0').style.zIndex = 400;
+        map.getPane('pane_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0').style['mix-blend-mode'] = 'normal';
+        var layer_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0 = new L.geoJson(json_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0',
+            layerName: 'layer_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0',
+            pane: 'pane_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0',
+            onEachFeature: pop_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0,
+            style: style_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0_0,
+        });
+        bounds_group.addLayer(layer_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0);
+        map.addLayer(layer_2010CensusTracts7geo_export_2290500ce24b4bd197370f973395f1c2_0);
+        function pop_WoodhavenBIDWoodhaven_BID_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_WoodhavenBIDWoodhaven_BID_1_0() {
+            return {
+                pane: 'pane_WoodhavenBIDWoodhaven_BID_1',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_WoodhavenBIDWoodhaven_BID_1');
+        map.getPane('pane_WoodhavenBIDWoodhaven_BID_1').style.zIndex = 401;
+        map.getPane('pane_WoodhavenBIDWoodhaven_BID_1').style['mix-blend-mode'] = 'normal';
+        var layer_WoodhavenBIDWoodhaven_BID_1 = new L.geoJson(json_WoodhavenBIDWoodhaven_BID_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_WoodhavenBIDWoodhaven_BID_1',
+            layerName: 'layer_WoodhavenBIDWoodhaven_BID_1',
+            pane: 'pane_WoodhavenBIDWoodhaven_BID_1',
+            onEachFeature: pop_WoodhavenBIDWoodhaven_BID_1,
+            style: style_WoodhavenBIDWoodhaven_BID_1_0,
+        });
+        bounds_group.addLayer(layer_WoodhavenBIDWoodhaven_BID_1);
+        map.addLayer(layer_WoodhavenBIDWoodhaven_BID_1);
+        function pop_SunnysideBID_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SunnysideBID_2_0() {
+            return {
+                pane: 'pane_SunnysideBID_2',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_SunnysideBID_2');
+        map.getPane('pane_SunnysideBID_2').style.zIndex = 402;
+        map.getPane('pane_SunnysideBID_2').style['mix-blend-mode'] = 'normal';
+        var layer_SunnysideBID_2 = new L.geoJson(json_SunnysideBID_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_SunnysideBID_2',
+            layerName: 'layer_SunnysideBID_2',
+            pane: 'pane_SunnysideBID_2',
+            onEachFeature: pop_SunnysideBID_2,
+            style: style_SunnysideBID_2_0,
+        });
+        bounds_group.addLayer(layer_SunnysideBID_2);
+        map.addLayer(layer_SunnysideBID_2);
+        function pop_RockawayBusinessAllianceRockaway_Business_Alliance_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_RockawayBusinessAllianceRockaway_Business_Alliance_3_0() {
+            return {
+                pane: 'pane_RockawayBusinessAllianceRockaway_Business_Alliance_3',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_RockawayBusinessAllianceRockaway_Business_Alliance_3');
+        map.getPane('pane_RockawayBusinessAllianceRockaway_Business_Alliance_3').style.zIndex = 403;
+        map.getPane('pane_RockawayBusinessAllianceRockaway_Business_Alliance_3').style['mix-blend-mode'] = 'normal';
+        var layer_RockawayBusinessAllianceRockaway_Business_Alliance_3 = new L.geoJson(json_RockawayBusinessAllianceRockaway_Business_Alliance_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_RockawayBusinessAllianceRockaway_Business_Alliance_3',
+            layerName: 'layer_RockawayBusinessAllianceRockaway_Business_Alliance_3',
+            pane: 'pane_RockawayBusinessAllianceRockaway_Business_Alliance_3',
+            onEachFeature: pop_RockawayBusinessAllianceRockaway_Business_Alliance_3,
+            style: style_RockawayBusinessAllianceRockaway_Business_Alliance_3_0,
+        });
+        bounds_group.addLayer(layer_RockawayBusinessAllianceRockaway_Business_Alliance_3);
+        map.addLayer(layer_RockawayBusinessAllianceRockaway_Business_Alliance_3);
+        function pop_QEDCRichmondHillQEDC_Richmond_Hill_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_QEDCRichmondHillQEDC_Richmond_Hill_4_0() {
+            return {
+                pane: 'pane_QEDCRichmondHillQEDC_Richmond_Hill_4',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_QEDCRichmondHillQEDC_Richmond_Hill_4');
+        map.getPane('pane_QEDCRichmondHillQEDC_Richmond_Hill_4').style.zIndex = 404;
+        map.getPane('pane_QEDCRichmondHillQEDC_Richmond_Hill_4').style['mix-blend-mode'] = 'normal';
+        var layer_QEDCRichmondHillQEDC_Richmond_Hill_4 = new L.geoJson(json_QEDCRichmondHillQEDC_Richmond_Hill_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_QEDCRichmondHillQEDC_Richmond_Hill_4',
+            layerName: 'layer_QEDCRichmondHillQEDC_Richmond_Hill_4',
+            pane: 'pane_QEDCRichmondHillQEDC_Richmond_Hill_4',
+            onEachFeature: pop_QEDCRichmondHillQEDC_Richmond_Hill_4,
+            style: style_QEDCRichmondHillQEDC_Richmond_Hill_4_0,
+        });
+        bounds_group.addLayer(layer_QEDCRichmondHillQEDC_Richmond_Hill_4);
+        map.addLayer(layer_QEDCRichmondHillQEDC_Richmond_Hill_4);
+        function pop_MorrisParkBIDMorris_Park_BID_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MorrisParkBIDMorris_Park_BID_5_0() {
+            return {
+                pane: 'pane_MorrisParkBIDMorris_Park_BID_5',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_MorrisParkBIDMorris_Park_BID_5');
+        map.getPane('pane_MorrisParkBIDMorris_Park_BID_5').style.zIndex = 405;
+        map.getPane('pane_MorrisParkBIDMorris_Park_BID_5').style['mix-blend-mode'] = 'normal';
+        var layer_MorrisParkBIDMorris_Park_BID_5 = new L.geoJson(json_MorrisParkBIDMorris_Park_BID_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MorrisParkBIDMorris_Park_BID_5',
+            layerName: 'layer_MorrisParkBIDMorris_Park_BID_5',
+            pane: 'pane_MorrisParkBIDMorris_Park_BID_5',
+            onEachFeature: pop_MorrisParkBIDMorris_Park_BID_5,
+            style: style_MorrisParkBIDMorris_Park_BID_5_0,
+        });
+        bounds_group.addLayer(layer_MorrisParkBIDMorris_Park_BID_5);
+        map.addLayer(layer_MorrisParkBIDMorris_Park_BID_5);
+        function pop_JamaicaCenterBIDJamaica_Center_BID_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_JamaicaCenterBIDJamaica_Center_BID_6_0() {
+            return {
+                pane: 'pane_JamaicaCenterBIDJamaica_Center_BID_6',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_JamaicaCenterBIDJamaica_Center_BID_6');
+        map.getPane('pane_JamaicaCenterBIDJamaica_Center_BID_6').style.zIndex = 406;
+        map.getPane('pane_JamaicaCenterBIDJamaica_Center_BID_6').style['mix-blend-mode'] = 'normal';
+        var layer_JamaicaCenterBIDJamaica_Center_BID_6 = new L.geoJson(json_JamaicaCenterBIDJamaica_Center_BID_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_JamaicaCenterBIDJamaica_Center_BID_6',
+            layerName: 'layer_JamaicaCenterBIDJamaica_Center_BID_6',
+            pane: 'pane_JamaicaCenterBIDJamaica_Center_BID_6',
+            onEachFeature: pop_JamaicaCenterBIDJamaica_Center_BID_6,
+            style: style_JamaicaCenterBIDJamaica_Center_BID_6_0,
+        });
+        bounds_group.addLayer(layer_JamaicaCenterBIDJamaica_Center_BID_6);
+        map.addLayer(layer_JamaicaCenterBIDJamaica_Center_BID_6);
+        function pop_HarlemParktoParkHarlem_Park_to_Park_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Serve</th>\
+                        <td>' + (feature.properties['Neighborhood Serve'] !== null ? autolinker.link(feature.properties['Neighborhood Serve'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_HarlemParktoParkHarlem_Park_to_Park_7_0() {
+            return {
+                pane: 'pane_HarlemParktoParkHarlem_Park_to_Park_7',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_HarlemParktoParkHarlem_Park_to_Park_7');
+        map.getPane('pane_HarlemParktoParkHarlem_Park_to_Park_7').style.zIndex = 407;
+        map.getPane('pane_HarlemParktoParkHarlem_Park_to_Park_7').style['mix-blend-mode'] = 'normal';
+        var layer_HarlemParktoParkHarlem_Park_to_Park_7 = new L.geoJson(json_HarlemParktoParkHarlem_Park_to_Park_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_HarlemParktoParkHarlem_Park_to_Park_7',
+            layerName: 'layer_HarlemParktoParkHarlem_Park_to_Park_7',
+            pane: 'pane_HarlemParktoParkHarlem_Park_to_Park_7',
+            onEachFeature: pop_HarlemParktoParkHarlem_Park_to_Park_7,
+            style: style_HarlemParktoParkHarlem_Park_to_Park_7_0,
+        });
+        bounds_group.addLayer(layer_HarlemParktoParkHarlem_Park_to_Park_7);
+        map.addLayer(layer_HarlemParktoParkHarlem_Park_to_Park_7);
+        function pop_GreaterHuntsPointGreater_Hunts_Point_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_GreaterHuntsPointGreater_Hunts_Point_8_0() {
+            return {
+                pane: 'pane_GreaterHuntsPointGreater_Hunts_Point_8',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_GreaterHuntsPointGreater_Hunts_Point_8');
+        map.getPane('pane_GreaterHuntsPointGreater_Hunts_Point_8').style.zIndex = 408;
+        map.getPane('pane_GreaterHuntsPointGreater_Hunts_Point_8').style['mix-blend-mode'] = 'normal';
+        var layer_GreaterHuntsPointGreater_Hunts_Point_8 = new L.geoJson(json_GreaterHuntsPointGreater_Hunts_Point_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_GreaterHuntsPointGreater_Hunts_Point_8',
+            layerName: 'layer_GreaterHuntsPointGreater_Hunts_Point_8',
+            pane: 'pane_GreaterHuntsPointGreater_Hunts_Point_8',
+            onEachFeature: pop_GreaterHuntsPointGreater_Hunts_Point_8,
+            style: style_GreaterHuntsPointGreater_Hunts_Point_8_0,
+        });
+        bounds_group.addLayer(layer_GreaterHuntsPointGreater_Hunts_Point_8);
+        map.addLayer(layer_GreaterHuntsPointGreater_Hunts_Point_8);
+        function pop_EastVillageCooperSquareEast_Village_Cooper_Square_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_EastVillageCooperSquareEast_Village_Cooper_Square_9_0() {
+            return {
+                pane: 'pane_EastVillageCooperSquareEast_Village_Cooper_Square_9',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EastVillageCooperSquareEast_Village_Cooper_Square_9');
+        map.getPane('pane_EastVillageCooperSquareEast_Village_Cooper_Square_9').style.zIndex = 409;
+        map.getPane('pane_EastVillageCooperSquareEast_Village_Cooper_Square_9').style['mix-blend-mode'] = 'normal';
+        var layer_EastVillageCooperSquareEast_Village_Cooper_Square_9 = new L.geoJson(json_EastVillageCooperSquareEast_Village_Cooper_Square_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EastVillageCooperSquareEast_Village_Cooper_Square_9',
+            layerName: 'layer_EastVillageCooperSquareEast_Village_Cooper_Square_9',
+            pane: 'pane_EastVillageCooperSquareEast_Village_Cooper_Square_9',
+            onEachFeature: pop_EastVillageCooperSquareEast_Village_Cooper_Square_9,
+            style: style_EastVillageCooperSquareEast_Village_Cooper_Square_9_0,
+        });
+        bounds_group.addLayer(layer_EastVillageCooperSquareEast_Village_Cooper_Square_9);
+        map.addLayer(layer_EastVillageCooperSquareEast_Village_Cooper_Square_9);
+        function pop_CLOTH_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CLOTH_10_0() {
+            return {
+                pane: 'pane_CLOTH_10',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CLOTH_10');
+        map.getPane('pane_CLOTH_10').style.zIndex = 410;
+        map.getPane('pane_CLOTH_10').style['mix-blend-mode'] = 'normal';
+        var layer_CLOTH_10 = new L.geoJson(json_CLOTH_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CLOTH_10',
+            layerName: 'layer_CLOTH_10',
+            pane: 'pane_CLOTH_10',
+            onEachFeature: pop_CLOTH_10,
+            style: style_CLOTH_10_0,
+        });
+        bounds_group.addLayer(layer_CLOTH_10);
+        map.addLayer(layer_CLOTH_10);
+        function pop_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11_0() {
+            return {
+                pane: 'pane_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11');
+        map.getPane('pane_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11').style.zIndex = 411;
+        map.getPane('pane_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11').style['mix-blend-mode'] = 'normal';
+        var layer_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11 = new L.geoJson(json_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11',
+            layerName: 'layer_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11',
+            pane: 'pane_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11',
+            onEachFeature: pop_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11,
+            style: style_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11_0,
+        });
+        bounds_group.addLayer(layer_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11);
+        map.addLayer(layer_ChhayaCDCJacksonHeightsChhaya_CDC_Jackson_Heights_11);
+        function pop_BayRidgeBay_Ridge_12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BayRidgeBay_Ridge_12_0() {
+            return {
+                pane: 'pane_BayRidgeBay_Ridge_12',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BayRidgeBay_Ridge_12');
+        map.getPane('pane_BayRidgeBay_Ridge_12').style.zIndex = 412;
+        map.getPane('pane_BayRidgeBay_Ridge_12').style['mix-blend-mode'] = 'normal';
+        var layer_BayRidgeBay_Ridge_12 = new L.geoJson(json_BayRidgeBay_Ridge_12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BayRidgeBay_Ridge_12',
+            layerName: 'layer_BayRidgeBay_Ridge_12',
+            pane: 'pane_BayRidgeBay_Ridge_12',
+            onEachFeature: pop_BayRidgeBay_Ridge_12,
+            style: style_BayRidgeBay_Ridge_12_0,
+        });
+        bounds_group.addLayer(layer_BayRidgeBay_Ridge_12);
+        map.addLayer(layer_BayRidgeBay_Ridge_12);
+        function pop_BridgeStBedStuyBridge_St_Bed_Stuy_13(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Grantee Name</th>\
+                        <td>' + (feature.properties['Grantee Name'] !== null ? autolinker.link(feature.properties['Grantee Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grantee Address</th>\
+                        <td>' + (feature.properties['Grantee Address'] !== null ? autolinker.link(feature.properties['Grantee Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Neighborhood Served</th>\
+                        <td>' + (feature.properties['Neighborhood Served'] !== null ? autolinker.link(feature.properties['Neighborhood Served'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cong. Dist</th>\
+                        <td>' + (feature.properties['Cong. Dist'] !== null ? autolinker.link(feature.properties['Cong. Dist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LMA %</th>\
+                        <td>' + (feature.properties['LMA %'] !== null ? autolinker.link(feature.properties['LMA %'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Budgeted</th>\
+                        <td>' + (feature.properties['CDBG Funds Budgeted'] !== null ? autolinker.link(feature.properties['CDBG Funds Budgeted'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CDBG Funds Expended</th>\
+                        <td>' + (feature.properties['CDBG Funds Expended'] !== null ? autolinker.link(feature.properties['CDBG Funds Expended'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grant Year</th>\
+                        <td>' + (feature.properties['Grant Year'] !== null ? autolinker.link(feature.properties['Grant Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BridgeStBedStuyBridge_St_Bed_Stuy_13_0() {
+            return {
+                pane: 'pane_BridgeStBedStuyBridge_St_Bed_Stuy_13',
+                opacity: 1,
+                color: 'rgba(227,223,15,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,223,15,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BridgeStBedStuyBridge_St_Bed_Stuy_13');
+        map.getPane('pane_BridgeStBedStuyBridge_St_Bed_Stuy_13').style.zIndex = 413;
+        map.getPane('pane_BridgeStBedStuyBridge_St_Bed_Stuy_13').style['mix-blend-mode'] = 'normal';
+        var layer_BridgeStBedStuyBridge_St_Bed_Stuy_13 = new L.geoJson(json_BridgeStBedStuyBridge_St_Bed_Stuy_13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BridgeStBedStuyBridge_St_Bed_Stuy_13',
+            layerName: 'layer_BridgeStBedStuyBridge_St_Bed_Stuy_13',
+            pane: 'pane_BridgeStBedStuyBridge_St_Bed_Stuy_13',
+            onEachFeature: pop_BridgeStBedStuyBridge_St_Bed_Stuy_13,
+            style: style_BridgeStBedStuyBridge_St_Bed_Stuy_13_0,
+        });
+        bounds_group.addLayer(layer_BridgeStBedStuyBridge_St_Bed_Stuy_13);
+        map.addLayer(layer_BridgeStBedStuyBridge_St_Bed_Stuy_13);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>2021 Commercial Corridors that Completed CD Funded Activities through Avenue NYC</h2>';
+            };
+            title.addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
